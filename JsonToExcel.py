@@ -131,8 +131,11 @@ S_Users.write('A5', 'Avg Friends/User', Bold14)
 S_Users.write('B5', average_friends_per_user, Bold14Green)
               
 L_activefriends_count = []
-for user_id in ActiveUsersFinal:
-    L_activefriends_count.append(D_user_id[user_id])
+try: 
+    for user_id in ActiveUsersFinal:
+        L_activefriends_count.append(D_user_id[user_id])
+except:
+    pass
 
 average_friends_per_activeuser = sum(L_activefriends_count)/len(L_activefriends_count)
 average_friends_per_activeuser = round(average_friends_per_activeuser,3)
@@ -328,6 +331,8 @@ for user_id in notifications.keys():
             total_ce = total_ce + 1
         if text_updated in notifications[user_id][nf_id]['text']:
             total_du = total_du + 1
+
+
 
 NF_dates = dict(Counter(NF_dates))
 NF_dates = sorted(NF_dates.items())
